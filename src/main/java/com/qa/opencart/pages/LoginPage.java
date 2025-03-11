@@ -41,8 +41,9 @@ public class LoginPage {
 		return loginPageURL;
 	}
 	
-	public AccountsPage doLogin(String emailId, String pswrd) {
-		eleUtil.doSendKeys(email, emailId, AppConstants.DEFAULT_LONG_TIMEOUT);
+	public AccountsPage doLogin(String userName, String pswrd) {
+		System.out.println("The Credentials are UesrName => " + userName + " Password => " + pswrd);
+		eleUtil.doSendKeys(email, userName, AppConstants.DEFAULT_LONG_TIMEOUT);
 		eleUtil.doSendKeys(password, pswrd);
 		eleUtil.doClick(loginBtn);
 		String myAccountPageTitle = brUtil.doGetPageTitleContains(AppConstants.ACCOUNT_PAGE_TITLE, AppConstants.DEFAULT_SHORT_TIMEOUT);

@@ -12,13 +12,10 @@ import com.qa.opencart.utils.ElementUtil;
 
 public class RegisterPage {
 	
-
-	private WebDriver driver;
 	private ElementUtil eleUtil;
 	private BrowserUtil brUtil;
 	
 	public RegisterPage(WebDriver driver){
-		this.driver = driver;
 		eleUtil = new ElementUtil(driver);
 		brUtil = new BrowserUtil(driver);
 	}

@@ -13,7 +13,6 @@ import com.qa.opencart.utils.ElementUtil;
 
 public class ProductPage {
 	
-	private WebDriver driver;
 	private ElementUtil eleUtil;
 	private BrowserUtil brUtil;
 	
@@ -23,14 +22,12 @@ public class ProductPage {
 	}
 
 	public ProductPage(WebDriver driver, String productName) {
-		this.driver = driver;
 		eleUtil = new ElementUtil(driver);
 		brUtil = new BrowserUtil(driver);
 		this.productName = productName;
 	}
 	
 	private By productNameHeader = By.tagName("h1");
-	private By productPrice = By.xpath("//h2[contains(text(),'$')]");
 	private By addToCartButton = By.id("button-cart");
 	private By productQuantity = By.id("input-quantity");
 //	private By successMessage = By.cssSelector("div#product-product>ul+div");

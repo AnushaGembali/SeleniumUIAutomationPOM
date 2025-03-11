@@ -19,6 +19,7 @@ public class ElementUtil {
 	
 	private WebDriver driver;
 	private Actions actions;
+	private long waitTime = 2L;
 	
 	public ElementUtil(WebDriver driver){
 		this.driver = driver;
@@ -253,7 +254,6 @@ public class ElementUtil {
 			for(By locator : locators) {
 				actions.moveToElement(doGetElement(locator))
 						.perform();
-				Thread.sleep(Duration.ofSeconds(2));
 			} 		
 			doGetElement(locators[locators.length -1]).click();
 		}
@@ -264,7 +264,6 @@ public class ElementUtil {
 			for(String locator : locators) {
 				actions.moveToElement(doGetElement(By.xpath("//*[text()='"+ locator +"']")))
 						.perform();
-				Thread.sleep(Duration.ofSeconds(2));
 			} 		
 			doGetElement(By.xpath("//*[text()='"+ locators[locators.length -1] +"']"));
 		}

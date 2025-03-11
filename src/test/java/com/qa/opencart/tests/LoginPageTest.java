@@ -1,15 +1,10 @@
 package com.qa.opencart.tests;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.constants.AppConstants;
-import com.qa.opencart.pages.AccountsPage;
 
 public class LoginPageTest extends BaseTest{
 	
@@ -33,7 +28,10 @@ public class LoginPageTest extends BaseTest{
 	
 	@Test(priority = Integer.MAX_VALUE)
 	public void doLoginTest() {
-		accountsPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		String userName = prop.getProperty("username");
+		String password = prop.getProperty("password");
+		accountsPage = loginPage.doLogin(userName, password);
+		System.out.println();
 		String actualTitleAfterLogin = accountsPage.getAccountsPageTitle();
 		Assert.assertEquals(actualTitleAfterLogin, AppConstants.ACCOUNT_PAGE_TITLE);
 	}

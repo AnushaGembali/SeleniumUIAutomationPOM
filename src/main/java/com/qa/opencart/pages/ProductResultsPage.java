@@ -28,7 +28,6 @@ public class ProductResultsPage {
 	}
 	
 	private By searchHeaderLoc = By.tagName("h1");
-	private By searchCriteriaHeader = By.cssSelector("div#content h2");
 	private By searchResults = By.cssSelector("div.product-thumb");
 	
 	public String getSearchPageTitle() {
