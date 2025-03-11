@@ -20,6 +20,7 @@ public class DriverFactory {
 	public static String isHighLight;
 	private WebDriver driver;
 	private Properties prop;
+	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
 	public WebDriver initDriver() {
 
@@ -31,27 +32,41 @@ public class DriverFactory {
 
 		switch (browserName.trim().toLowerCase()) {
 		case "chrome":
-			driver = new ChromeDriver(optionsManager.getChromeOptions());
+			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+//			driver = new ChromeDriver(optionsManager.getChromeOptions());
 			break;
 		case "firefox":
-			driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+//			driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
 			break;
 		case "edge":
-			driver = new EdgeDriver(optionsManager.getEdgeOptions());
+			tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
+//			driver = new EdgeDriver(optionsManager.getEdgeOptions());
 			break;
 		case "safari":
-			driver = new SafariDriver();
+			tlDriver.set(new SafariDriver());
+//			driver = new SafariDriver();
 			break;
 		default:
 			System.out.println(AppError.INVALID_BROWSER_MSG + browserName + " is invalid");
 			throw new BrowserException(AppError.INVALID_BROWSER_MSG);
 		}
+		driver = getDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		String url = prop.getProperty("url");
 		System.out.println("The URL is : " + url);
 		driver.get(url);
 		return driver;
+	}
+	
+	/**
+	 * This method returns the driver with threadlocal
+	 * @return
+	 */
+	
+	private static WebDriver getDriver() {
+		return tlDriver.get();
 	}
 
 	/**

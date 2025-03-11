@@ -13,12 +13,14 @@ public class OptionsManager {
 	private FirefoxOptions fo;
 	private EdgeOptions eo;
 	
-	private boolean headlessValue = System.getProperty("headless") != null ? Boolean.parseBoolean(System.getProperty("headless")) : Boolean.parseBoolean(prop.getProperty("headless"));
-	private boolean incognitoValue = System.getProperty("incognito") != null ? Boolean.parseBoolean(System.getProperty("incognito")) : Boolean.parseBoolean(prop.getProperty("incognito"));
+	private boolean headlessValue;
+	private boolean incognitoValue;
 	
 	
 	OptionsManager(Properties prop){
 		this.prop = prop;
+		headlessValue = System.getProperty("headless") != null ? Boolean.parseBoolean(System.getProperty("headless")) : Boolean.parseBoolean(prop.getProperty("headless"));
+		incognitoValue = System.getProperty("incognito") != null ? Boolean.parseBoolean(System.getProperty("incognito")) : Boolean.parseBoolean(prop.getProperty("incognito"));
 	}
 	
 	public ChromeOptions getChromeOptions() {
