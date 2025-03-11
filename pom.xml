@@ -35,7 +35,7 @@
 			<artifactId>testng</artifactId>
 			<version>7.7.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
@@ -67,12 +67,19 @@
 			<artifactId>openxml4j</artifactId>
 			<version>1.0-beta</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.1.2</version>
+		</dependency>
+
 
 	</dependencies>
 
 	<build>
 		<plugins>
-		
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -93,13 +100,14 @@
 					<forkCount>3</forkCount>
 					<reuseForks>true</reuseForks>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/resources/testrunners/testng_sanity.xml</suiteXmlFile>
+						<suiteXmlFile>
+							src/test/resources/testrunners/testng_sanity.xml</suiteXmlFile>
 					</suiteXmlFiles>
-			    </configuration>
-			    
+				</configuration>
+
 			</plugin>
-			
+
 		</plugins>
 	</build>
-	
+
 </project>
