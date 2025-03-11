@@ -15,26 +15,37 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.opencart.factory.DriverFactory;
+
 public class ElementUtil {
 	
 	private WebDriver driver;
 	private Actions actions;
-	private long waitTime = 2L;
+	private JavascriptExecutorUtil jsUtil;
 	
 	public ElementUtil(WebDriver driver){
 		this.driver = driver;
 		actions = new Actions(driver);
+		jsUtil = new JavascriptExecutorUtil(driver);
 	}
 
+	private void checkElementHighlight(WebElement element) {
+		if(Boolean.parseBoolean(DriverFactory.isHighLight)) {
+			jsUtil.flashElement(element);
+		}
+	}
 	
 	public WebElement doGetElement(By locator) {
 		WebElement element =  driver.findElement(locator);
+		checkElementHighlight(element);
 		return element;
 		
 	}
 	
 	public WebElement doGetElement(By locator, int time) {
-		return doGetElementAfterVisisble(locator, time);
+		WebElement element = doGetElementAfterVisisble(locator, time);
+		 
+		return element;
 	} 
 	
 	public List<WebElement> doGetElements(By locator){

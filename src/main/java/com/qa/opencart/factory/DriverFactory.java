@@ -17,23 +17,27 @@ import com.qa.opencart.exceptions.FrameworkException;
 
 public class DriverFactory {
 
-	WebDriver driver;
-	Properties prop;
+	public static String isHighLight;
+	private WebDriver driver;
+	private Properties prop;
 
 	public WebDriver initDriver() {
 
+		OptionsManager optionsManager = new OptionsManager(this.prop);
+		isHighLight= prop.getProperty("highlight");
+		
 		String browserName = prop.getProperty("browser");
 		System.out.println("Browser Name is: " + browserName);
 
 		switch (browserName.trim().toLowerCase()) {
 		case "chrome":
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(optionsManager.getChromeOptions());
 			break;
 		case "firefox":
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
 			break;
 		case "edge":
-			driver = new EdgeDriver();
+			driver = new EdgeDriver(optionsManager.getEdgeOptions());
 			break;
 		case "safari":
 			driver = new SafariDriver();
@@ -61,7 +65,7 @@ public class DriverFactory {
 
 		FileInputStream ip = null;
 		String env = System.getProperty("env");
-		System.out.println("The tests will be running in " + env.toUpperCase() + " environment" );
+		System.out.println("The tests will be running in " + env + " environment" );
 		prop = new Properties();
 
 		try {

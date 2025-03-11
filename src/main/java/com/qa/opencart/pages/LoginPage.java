@@ -42,7 +42,7 @@ public class LoginPage {
 	}
 	
 	public AccountsPage doLogin(String userName, String pswrd) {
-		System.out.println("The Credentials are UesrName => " + userName + " Password => " + pswrd);
+		System.out.println("The Credentials are UserName => " + userName + " Password => " + pswrd);
 		eleUtil.doSendKeys(email, userName, AppConstants.DEFAULT_LONG_TIMEOUT);
 		eleUtil.doSendKeys(password, pswrd);
 		eleUtil.doClick(loginBtn);
