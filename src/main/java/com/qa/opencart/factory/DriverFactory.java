@@ -1,14 +1,18 @@
 package com.qa.opencart.factory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.safari.SafariDriver;
 
 import com.qa.opencart.errors.AppError;
@@ -86,9 +90,10 @@ public class DriverFactory {
 		try {
 			if (env == null) {
 				System.out.println("The tests will be running in QA environment, since env is null" );
-				ip = new FileInputStream("src/test/resources/config/qa.config.properties");
+//				ip = new FileInputStream("src/test/resources/config/qa.config.properties");
+				env = "qa";
 			} 
-			else {
+//			else {
 				switch (env.toLowerCase().trim()) {
 				case ("qa"):
 					ip = new FileInputStream("src/test/resources/config/qa.config.properties");
@@ -106,7 +111,7 @@ public class DriverFactory {
 					System.out.println("Please pass the right environment name");
 					throw new FrameworkException("INVALID ENV NAME");
 					}
-				}
+//				}
 				prop.load(ip);
 		     } catch(FileNotFoundException e){
 		             System.out.println("=============== Config file is not found =================");
@@ -115,4 +120,17 @@ public class DriverFactory {
 		     }
 		return prop;
 		}
+
+	public static String getScreenshot(String methodName) {
+		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+		
+		String destFilePath = System.getProperty("user.dir") + "/screenshot/" + methodName + "_"+ System.currentTimeMillis() + ".png";
+		File destFile = new File(destFilePath);
+		try {
+			FileHandler.copy(srcFile, destFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+		return destFilePath;
+	}
 }
