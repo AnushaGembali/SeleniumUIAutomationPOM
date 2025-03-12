@@ -16,6 +16,8 @@ import com.qa.opencart.pages.ProductPage;
 import com.qa.opencart.pages.ProductResultsPage;
 import com.qa.opencart.pages.RegisterPage;
 
+import io.qameta.allure.Step;
+
 public class BaseTest {
 	
 	WebDriver driver;
@@ -28,6 +30,7 @@ public class BaseTest {
 	protected Properties prop;
 	protected SoftAssert softAssert;
 	
+	@Step("Initialize the properties file and launch the browser")
 	@Parameters({"browser"})
 	@BeforeTest
 	public void setUp(@Optional("chrome") String browserName) {
@@ -42,6 +45,7 @@ public class BaseTest {
 //		registerPage = new RegisterPage(driver);
 	}
 	
+	@Step("Close the browser")
 	@AfterTest
 	public void tearDown() {
 		driver.quit();

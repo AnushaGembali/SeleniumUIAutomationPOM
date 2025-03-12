@@ -8,24 +8,14 @@
 			class-name="com.qa.opencart.listeners.ExtentReportListener" />
 		<listener
 			class-name="com.qa.opencart.listeners.AnnotationTransformer" />
+		<listener
+			class-name="com.qa.opencart.listeners.TestAllureListener" />
 	</listeners>
 
 	<test name="Login Page Test">
 		<parameter name="browser" value="firefox" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
-		</classes>
-	</test>
-
-	<test name="Accounts Page Test">
-		<classes>
-			<class name="com.qa.opencart.tests.AccountsPageTest" />
-		</classes>
-	</test>
-
-	<test name="Register Page Test">
-		<classes>
-			<class name="com.qa.opencart.tests.RegisterPageTest" />
 		</classes>
 	</test>
 

@@ -10,6 +10,8 @@ import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.utils.BrowserUtil;
 import com.qa.opencart.utils.ElementUtil;
 
+import io.qameta.allure.Step;
+
 public class LoginPage {
 	
 	private WebDriver driver;
@@ -29,18 +31,21 @@ public class LoginPage {
 	private By rightMenuLinks = By.cssSelector(".list-group>a");
 	private By registerLink = By.linkText("Register");
 	
+	@Step("Getting the login page Title")
 	public String getloginPageTitle() {
 		String loginPageTitle = brUtil.doGetPageTitleContains(AppConstants.LOGIN_PAGE_TITLE, AppConstants.DEFAULT_SHORT_TIMEOUT);
 		System.out.println("Login Page Title is : " + loginPageTitle);
 		return loginPageTitle;
 	}
 	
+	@Step("Getting the login page URL")
 	public String getLoginPageURL() {
 		String loginPageURL = brUtil.doGetPageURLContains(AppConstants.LOGIN_PAGE_FRACTION_URL, AppConstants.DEFAULT_SHORT_TIMEOUT);
 		System.out.println("Login Page URL is : " + loginPageURL);
 		return loginPageURL;
 	}
 	
+	@Step("Logging into the browser with UserName: {0} and Password: {1}")
 	public AccountsPage doLogin(String userName, String pswrd) {
 		System.out.println("The Credentials are UserName => " + userName + " Password => " + pswrd);
 		eleUtil.doSendKeys(email, userName, AppConstants.DEFAULT_LONG_TIMEOUT);
@@ -56,6 +61,7 @@ public class LoginPage {
 		return eleUtil.doIsElementDisplayed(forgotPswLink);
 	}
 	
+	
 	public List<String> getRightMenuItesm() {
 		List<String> menuItems = eleUtil.doGetElements(rightMenuLinks, AppConstants.DEFAULT_SHORT_TIMEOUT)
 											.stream()
@@ -64,6 +70,7 @@ public class LoginPage {
 		return menuItems;
 	}
 	
+	@Step("Navigating to Register Page")
 	public RegisterPage navigateToRegisterPage() {
 		eleUtil.doClick(registerLink);
 		return new RegisterPage(driver);

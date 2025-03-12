@@ -17,6 +17,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.opencart.factory.DriverFactory;
 
+import io.qameta.allure.Step;
+
 public class ElementUtil {
 	
 	private WebDriver driver;
@@ -56,6 +58,7 @@ public class ElementUtil {
 		return doGetElementsAfterVisisble(locator, time);
 	}
 	
+	@Step("Entering value:{1} into locator:{0}")
 	public void doSendKeys(By locator, String value) {
 		WebElement element = doGetElement(locator);
 		element.clear();
@@ -68,12 +71,14 @@ public class ElementUtil {
 		doGetElement(locator).sendKeys(value);
 	}
 	
+	@Step("Entering value:{1} into locator:{0}")
 	public void doSendKeys(By locator, String value, int time) {
 		WebElement element = doGetElementAfterVisisble(locator,time);
 		element.clear();
 		element.sendKeys(value);
 	}
 	
+	@Step("Clicking on the element: {0}")
 	public void doClick(By locator) {
 		doGetElement(locator).click();
 	}
@@ -100,6 +105,7 @@ public class ElementUtil {
 		return null;		
 	}
 	
+	@Step("Chekcing if element {0} is dispalyed on the page")
 	public boolean doIsElementDisplayed(By locator) {
 		try {
 			return doGetElement(locator).isDisplayed();
@@ -363,6 +369,7 @@ public class ElementUtil {
 	  * @param time
 	  * @return
 	  */
+	 @Step("Waiting for element {0} to be visible within {1} secs")
 	 private WebElement doGetElementAfterVisisble(By locator, int time) {
 		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		 return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));

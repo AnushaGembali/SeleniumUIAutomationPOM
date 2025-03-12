@@ -19,6 +19,8 @@ import com.qa.opencart.errors.AppError;
 import com.qa.opencart.exceptions.BrowserException;
 import com.qa.opencart.exceptions.FrameworkException;
 
+import io.qameta.allure.Step;
+
 public class DriverFactory {
 
 	public static String isHighLight;
@@ -26,6 +28,7 @@ public class DriverFactory {
 	private Properties prop;
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
+	@Step("Launching the browser")
 	public WebDriver initDriver() {
 
 		OptionsManager optionsManager = new OptionsManager(this.prop);
@@ -69,7 +72,7 @@ public class DriverFactory {
 	 * @return
 	 */
 	
-	private static WebDriver getDriver() {
+	public static WebDriver getDriver() {
 		return tlDriver.get();
 	}
 

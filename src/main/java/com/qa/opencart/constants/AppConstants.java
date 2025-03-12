@@ -15,7 +15,7 @@ public class AppConstants {
 	public static final String REGISTRATION_SUCCESS_PAGE_FRACTION_URL = "route=account/success";
 	public static final String REGISTRATION_SUCCESS_PAGE_TITLE_AND_HEADER = "Your Account Has Been Created!";
 	
-	public static final String ACCOUNT_PAGE_TITLE = "My Account11";	
+	public static final String ACCOUNT_PAGE_TITLE = "My Account";	
 	public static final String ACCOUNT_PAGE_FRACTION_URL = "route=account/account";
 	public static final int EXPECTED_ACCOUNTS_PAGE_HEADERS_COUNT = 4; 
 	public static final List<String> EXPECTED_ACCOUNTS_PAGE_HEADERS_LIST = List.of("My Account", "My Orders", "My Affiliate Account", "Newsletter");
