@@ -4,6 +4,7 @@ screenshot/
 test-output/
 build/
 reports/
+log/
 
 application.log
 ##############################
