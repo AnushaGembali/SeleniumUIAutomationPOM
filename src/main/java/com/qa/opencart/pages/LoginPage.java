@@ -47,7 +47,7 @@ public class LoginPage {
 	
 	@Step("Logging into the browser with UserName: {0} and Password: {1}")
 	public AccountsPage doLogin(String userName, String pswrd) {
-		System.out.println("The Credentials are UserName => " + userName + " Password => " + pswrd);
+		System.out.println("The Credentials are UserName => " + userName);
 		eleUtil.doSendKeys(email, userName, AppConstants.DEFAULT_LONG_TIMEOUT);
 		eleUtil.doSendKeys(password, pswrd);
 		eleUtil.doClick(loginBtn);
