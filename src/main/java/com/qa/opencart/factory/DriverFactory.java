@@ -85,6 +85,7 @@ public class DriverFactory {
 
 	public Properties initProp() {
 
+		System.out.println("========== Loading teh PROPERTIES FILE ===========");
 		FileInputStream ip = null;
 		String env = System.getProperty("env");
 		System.out.println("The tests will be running in " + env + " environment" );

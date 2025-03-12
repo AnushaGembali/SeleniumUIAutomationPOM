@@ -34,6 +34,7 @@ public class BaseTest {
 	@Parameters({"browser"})
 	@BeforeTest
 	public void setUp(@Optional("chrome") String browserName) {
+		System.out.println("IN BASE TEST ====> Setting up the driver");
 		df = new DriverFactory();
 		prop = df.initProp();
 		if(browserName != null) {
