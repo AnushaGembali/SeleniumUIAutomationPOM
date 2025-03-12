@@ -13,7 +13,7 @@ public class ProductPageTest extends BaseTest{
 	
 	@BeforeClass
 	public void doLogin() {
-		accountsPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		accountsPage = loginPage.doLogin(prop.getProperty("username"), System.getProperty("password"));
 	}
 	
 	private void navigateToProductPage(String searchProductName, String childProdName) {

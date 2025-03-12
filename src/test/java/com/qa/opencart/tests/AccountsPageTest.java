@@ -13,7 +13,7 @@ public class AccountsPageTest extends BaseTest{
 	
 	@BeforeClass
 	public void doAccountsPageSetup() {
-		accountsPage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		accountsPage = loginPage.doLogin(prop.getProperty("username"), System.getProperty("password"));
 	}
 
 	
