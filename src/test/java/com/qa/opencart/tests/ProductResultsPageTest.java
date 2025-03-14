@@ -11,7 +11,7 @@ public class ProductResultsPageTest extends BaseTest{
 	
 	@BeforeClass
 	public void doLogin() {
-		String pwd = System.getProperty("password")== null ? System.getProperty("password") : System.getProperty("password");
+		String pwd = System.getProperty("password")== null ? prop.getProperty("password") : System.getProperty("password");
 		accountsPage = loginPage.doLogin(prop.getProperty("username"), pwd);
 	}
 	
