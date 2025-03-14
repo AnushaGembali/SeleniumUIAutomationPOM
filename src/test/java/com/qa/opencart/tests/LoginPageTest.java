@@ -57,7 +57,7 @@ public class LoginPageTest extends BaseTest{
 	@Test(priority = Integer.MAX_VALUE)
 	public void doLoginTest() {
 		String userName = prop.getProperty("username");
-		String password = System.getProperty("password");
+		String password = System.getProperty("password")== null ? System.getProperty("password") : System.getProperty("password");
 		accountsPage = loginPage.doLogin(userName, password);
 		System.out.println();
 		String actualTitleAfterLogin = accountsPage.getAccountsPageTitle();
