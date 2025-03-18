@@ -40,7 +40,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/AnushaGembali/SeleniumUIAutomationPOM.git'
-                    sh "mvn clean install -U -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa -Dpassword=Selenium@12345"
+                    sh "mvn clean test -e -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa -Dpassword=Selenium@12345"
                     
                 }
             }
@@ -84,7 +84,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/AnushaGembali/SeleniumUIAutomationPOM.git'
-                    sh "mvn clean install -U -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=uat -Dpassword=nhujj"
+                    sh "mvn clean test -e -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=uat -Dpassword=nhujj"
                     
                 }
             }
