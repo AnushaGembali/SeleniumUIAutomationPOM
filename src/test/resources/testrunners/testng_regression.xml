@@ -23,6 +23,7 @@
 	</test>
 	
 	<test name="Product Results Page Test">
+	<parameter name="browser" value="edge"/>
 		<classes>
 			<class name="com.qa.opencart.tests.ProductResultsPageTest" />
 		</classes>

@@ -30,7 +30,7 @@ public class ProductDataProvider {
 			{"mac",4},
 			{"samsung",2},
 			{"apple",1 },
-			{"anusha",1}
+			{"anusha",0}
 		};
 	}
 	

@@ -1,5 +1,7 @@
 package com.qa.opencart.factory;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,12 +17,13 @@ public class OptionsManager {
 	
 	private boolean headlessValue;
 	private boolean incognitoValue;
+	 
 	
 	
 	OptionsManager(Properties prop){
 		this.prop = prop;
-		headlessValue = System.getProperty("headless") != null ? Boolean.parseBoolean(System.getProperty("headless")) : Boolean.parseBoolean(prop.getProperty("headless"));
-		incognitoValue = System.getProperty("incognito") != null ? Boolean.parseBoolean(System.getProperty("incognito")) : Boolean.parseBoolean(prop.getProperty("incognito"));
+		headlessValue = System.getProperty("headless") != null ? Boolean.parseBoolean(System.getProperty("headless")) : Boolean.parseBoolean(prop.getProperty("headless").trim());
+		incognitoValue = System.getProperty("incognito") != null ? Boolean.parseBoolean(System.getProperty("incognito")) : Boolean.parseBoolean(prop.getProperty("incognito").trim());
 	}
 	
 	public ChromeOptions getChromeOptions() {
@@ -32,6 +35,16 @@ public class OptionsManager {
 		if(incognitoValue) {
 			System.out.println("...Running in Incognito...");
 			op.addArguments("--incognito");
+		}
+		if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+			op.setCapability("browserName", "chrome");
+			op.setBrowserVersion(prop.getProperty("browserVersion").trim());
+			
+			Map<String, Object> selenoidOptions = new HashMap<>();
+			selenoidOptions.put("enableVNC", true);
+			selenoidOptions.put("screenResolution", "1920x1080x24");
+			selenoidOptions.put("name", prop.getProperty("testName"));
+			op.setCapability("selenoid:options", selenoidOptions);
 		}
 		return op;
 	}
@@ -46,6 +59,17 @@ public class OptionsManager {
 			System.out.println("...Running in Incognito...");
 			fo.addArguments("--incognito");
 		}
+		if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+			fo.setCapability("browserName", "firefox");
+			fo.setBrowserVersion(prop.getProperty("browserVersion").trim());
+			
+			Map<String, Object> selenoidOptions = new HashMap<>();
+			selenoidOptions.put("enableVNC", true);
+			selenoidOptions.put("screenResolution", "1920x1080x24");
+			selenoidOptions.put("name", prop.getProperty("testName"));
+			fo.setCapability("selenoid:options", selenoidOptions);
+			
+		}
 		return fo;
 	}
 	
@@ -58,6 +82,16 @@ public class OptionsManager {
 		if(incognitoValue) {
 			System.out.println("...Running in Incognito...");
 			eo.addArguments("--inPrivate");
+		}
+		if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+			eo.setCapability("browserName", "edge");
+			eo.setBrowserVersion(prop.getProperty("browserVersion").trim());
+			
+			Map<String, Object> selenoidOptions = new HashMap<>();
+			selenoidOptions.put("enableVNC", true);
+			selenoidOptions.put("screenResolution", "1920x1080x24");
+			selenoidOptions.put("name", prop.getProperty("testName"));
+			eo.setCapability("selenoid:options", selenoidOptions);
 		}
 		return eo;
 	}

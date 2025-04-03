@@ -28,6 +28,6 @@ public class AppConstants {
 	public static final int DEFAULT_LONG_TIMEOUT = 20;
 	public static final String REG_SHEET_NAME = "registerpage";
 	
-	
+	public static final String LOGIN_ERROR_MESSAGE = "Warning: No match for E-Mail Address and/or Password.";
 
 }

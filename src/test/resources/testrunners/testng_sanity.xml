@@ -14,15 +14,38 @@
 
 	<test name="Login Page Test">
 		<parameter name="browser" value="chrome" />
+		<parameter name="browserVersion" value="79.0" />
+		<parameter name="testName" value="Login Page Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
 
 	<test name="Accounts Page Test">
-		<parameter name="browser" value="firefox" />
+		<parameter name="browser" value="chrome" />
+		<parameter name="browserVersion" value="89.0" />
+		<parameter name="testName" value="Accounts Page Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.AccountsPageTest" />
 		</classes>
 	</test>
+
+	<test name="Product Page Test">
+		<parameter name="browser" value="chrome" />
+		<parameter name="browserVersion" value="90.0" />
+		<parameter name="testName" value="Product Page Test" />
+		<classes>
+			<class name="com.qa.opencart.tests.ProductPageTest" />
+		</classes>
+	</test>
+
+	<test name="Product Results Page Test">
+		<parameter name="browser" value="chrome" />
+		<parameter name="browserVersion" value="91.0" />
+		<parameter name="testName" value="Product Results Page Test" />
+		<classes>
+			<class name="com.qa.opencart.tests.ProductResultsPageTest" />
+		</classes>
+	</test>
+
 </suite>
